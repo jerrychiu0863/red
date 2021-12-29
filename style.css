@@ -1,0 +1,163 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+h1 {
+  font-size: 100px;
+  position: relative;
+  color: #b50b0b;
+  z-index: 1;
+}
+
+h1::after {
+  content: 'RED';
+  position: absolute;
+  color: #fff;
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
+  z-index: 1;
+}
+
+#canvas-container {
+  position: absolute;
+  bottom: 5px;
+  left: -10px;
+  z-index: 0;
+}
+
+#bar {
+  width: 1px;
+  height: 90vh;
+  background: #e0e0e0;
+  /* opacity: 0.4; */
+  z-index: 2;
+}
+
+#bar::before {
+  position: absolute;
+  content: '';
+  width: 10px;
+  height: 10px;
+  top: 0;
+  left: -5px;
+  transform: rotate(45deg);
+  background: #e0e0e0;
+  z-index: 4;
+}
+
+#bar::after {
+  position: absolute;
+  content: '';
+  width: 10px;
+  height: 10px;
+  bottom: 0;
+  left: -5px;
+  transform: rotate(45deg);
+  background: #e0e0e0;
+  z-index: 4;
+}
+
+.text {
+  font-size: 150px;
+  transform: translateX(-100px) rotate(90deg);
+  color: #999;
+  opacity: 0.61;
+}
+
+canvas {
+  display: block;
+}
+
+#box-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#box {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: #b50b0b;
+  transition: all linear 0.2s;
+}
+
+#box::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  background: rgb(250, 241, 241);
+  position: absolute;
+}
+
+#box::after {
+  content: '';
+  width: 25px;
+  height: 25px;
+  background: rgb(250, 241, 241);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#box:hover {
+  background: rgb(250, 241, 241);
+}
+
+#box:hover::before,
+#box:hover::after {
+  background-color: #b50b0b;
+}
+
+.mark-container {
+  position: absolute;
+  bottom: 100px;
+  right: -10vw;
+}
+
+.water-mark {
+  position: relative;
+  font-size: 500px;
+  z-index: -1;
+  line-height: 0;
+  letter-spacing: 30px;
+  color: rgba(224, 187, 187, 0.4);
+  /* text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px,
+    #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px; */
+}
+
+.water-mark::after {
+  content: 'RED';
+  position: absolute;
+  font-size: 500px;
+  -webkit-text-stroke: 1px rgba(224, 187, 187, 0.8);
+  -webkit-text-fill-color: transparent;
+  top: -10px;
+  left: -10px;
+  z-index: 2;
+}
+
+@media screen and (max-width: 430px) {
+  #bar {
+    display: none;
+  }
+}
